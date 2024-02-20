@@ -1,14 +1,15 @@
 import { IDrinksCategories } from './IDrinksCategories';
 import { IDrinksIngredients } from './IDrinksIngredients';
 import { IDrinks } from './IDrinks';
+import { dbResponse } from '..';
 
 export interface IDrinksModel {
-  getAllDrinks(): Promise<IDrinks[]>;
-  getDrinkByName(meal: string): Promise<IDrinks[]>;
-  getDrinkByLetter(letter: string): Promise<IDrinks[]>;
-  getRandomDrink(): Promise<IDrinks>;
-  getCategories(): Promise<IDrinksCategories[]>;
-  getIngredients(): Promise<IDrinksIngredients[]>;
-  getFilters(type: string, value: string): Promise<IDrinksCategories[] | IDrinksIngredients[]>;
-  getDrinkById(id: number): Promise<IDrinks>
+  getAllDrinks(): Promise<dbResponse<IDrinks[]>>
+  getDrinkByName(meal: string): Promise<dbResponse<IDrinks | null>>;
+  getDrinkByLetter(letter: string): Promise<dbResponse<IDrinks[] | null>>;
+  getRandomDrink(): Promise<dbResponse<IDrinks | null>>;
+  getCategories(): Promise<dbResponse<IDrinksCategories[]>>;
+  getIngredients(): Promise<dbResponse<IDrinksIngredients[]>>;
+  getFilters(type: string, value: string): Promise<dbResponse<IDrinks[] | null> | null>
+  getDrinkById(id: number): Promise<dbResponse<IDrinks[]>>
 }

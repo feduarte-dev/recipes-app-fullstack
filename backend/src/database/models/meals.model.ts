@@ -19,19 +19,14 @@ InferCreationAttributes<SequelizeMeals>
   declare strMeal: string;
   declare strDrinkAlternate: string | null;
   declare strCategoryId: number;
-  // declare strCategory: { strCategory: string | null } ;
   declare strAreaId: number;
-  // declare strArea: { strArea: string | null };
   declare strInstructions: string;
   declare strMealThumb: string;
   declare strTags: string;
   declare strYoutube: string;
   declare strIngredient1Id: number;
-  // declare strIngredient1: { strIngredient: string | null };
   declare strIngredient2Id: number;
-  // declare strIngredient2: { strIngredient: string | null };
   declare strIngredient3Id: number;
-  // declare strIngredient3: { strIngredient: string | null };
   declare strIngredient4Id: number;
   declare strIngredient5Id: number;
   declare strIngredient6Id: number;
@@ -239,21 +234,6 @@ SequelizeMeals.init(
     dateModified: {
       type: DataTypes.STRING,
     },
-    // strCategory: {
-    //   type: DataTypes.ABSTRACT,
-    // },
-    // strArea: {
-    //   type: DataTypes.STRING,
-    // },
-    // strIngredient1: {
-    //   type: DataTypes.STRING,
-    // },
-    // strIngredient2: {
-    //   type: DataTypes.STRING,
-    // },
-    // strIngredient3: {
-    //   type: DataTypes.STRING,
-    // },
   },
   {
     sequelize: db,

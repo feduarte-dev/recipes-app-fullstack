@@ -52,3 +52,4 @@ export const { app } = new App();
 // A necessidade de tipar com null qdo acessamos banco de dados é pq pode nao haver nada dentro deles?
 // pq as vezes nao consigo usar o get properties como parametro da busca no banco de dados?
 // parte de comecar a receita ta bugado
+// o warning do frontend no docker é por conta dos arquivos do proprio front end com erros?

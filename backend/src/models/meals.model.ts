@@ -5,22 +5,17 @@ import { dbResponse } from '../interfaces';
 import { IMealsModel } from '../interfaces/meals/IMealsModel';
 import { IMeals } from '../interfaces/meals/IMeals';
 import { IMealsCategories } from '../interfaces/meals/IMealsCategories';
-import { IAreasDB } from '../interfaces/meals/IAreas';
+import { IAreas } from '../interfaces/meals/IAreas';
 import { IMealsIngredients } from '../interfaces/meals/IMealsIngredients';
 import SequelizeMeals from '../database/models/meals.model';
 import SequelizeMealsCategories from '../database/models/meals.categories.model';
 import SequelizeAreas from '../database/models/areas.model';
 import SequelizeMealsIngredients from '../database/models/meals.ingredients.model';
+// import { getMealCategoriesUrl, getMealFiltersUrl,
+//   getAreasUrl, getMealIdUrl, getMealLetterUrl,
+//   getMealRandomUrl, getMealNamesUrl, getMealIngredientsUrl } from '../utils/api.url';
 
 export default class MealsModel implements IMealsModel {
-  private getNamesUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
-  private getLetterUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
-  private getRandomUrl = 'https://www.themealdb.com/api/json/v1/1/random.php';
-  private getCategoriesUrl = 'https://www.themealdb.com/api/json/v1/1/categories.php';
-  private getAreasUrl = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
-  private getIngredientsUrl = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
-  private getFiltersUrl = 'https://www.themealdb.com/api/json/v1/1/filter.php?';
-  private getIdUrl = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
   private model = SequelizeMeals;
   private mealsCategoriesModel = SequelizeMealsCategories;
   private mealsAreasModel = SequelizeAreas;
@@ -56,7 +51,7 @@ export default class MealsModel implements IMealsModel {
   };
 
   async getAllMeals(): Promise<dbResponse<IMeals[]>> {
-    // const response = await axios.get(`${this.getNamesUrl}`);
+    // const response = await axios.get(`${getMealNamesUrl}`);
     // return response.data;
     const dbData = await this.model.findAll(this.getProperties);
 
@@ -64,7 +59,7 @@ export default class MealsModel implements IMealsModel {
   }
 
   async getMealById(id: number): Promise<dbResponse<IMeals[] | null>> {
-    // const response = await axios.get(`${this.getIdUrl}${id}`);
+    // const response = await axios.get(`${getMealIdUrl}${id}`);
     // return response.data;
     const dbData = await this.model.findAll({ where: { idMeal: id },
       include: [
@@ -93,13 +88,14 @@ export default class MealsModel implements IMealsModel {
           as: 'strIngredient3',
           attributes: ['strIngredient'],
         },
-      ] });
+      ],
+    });
 
     return { meals: dbData };
   }
 
   async getMealByName(meal: string): Promise<dbResponse<IMeals | null>> {
-    // const response = await axios.get(`${this.getNamesUrl}${meal}`);
+    // const response = await axios.get(`${getMealNamesUrl}${meal}`);
     // return response.data;
     const dbData = await this.model.findOne({ where: { strMeal: meal },
       include: [
@@ -134,7 +130,7 @@ export default class MealsModel implements IMealsModel {
   }
 
   async getMealByLetter(letter: string): Promise<dbResponse<IMeals[] | null>> {
-    // const response = await axios.get(`${this.getLetterUrl}${letter}`);
+    // const response = await axios.get(`${getMealLetterUrl}${letter}`);
     // return response.data;
     const dbData = await this.model.findAll({
       where: {
@@ -175,7 +171,7 @@ export default class MealsModel implements IMealsModel {
   }
 
   async getRandomMeal(): Promise<dbResponse<IMeals | null>> {
-    // const response = await axios.get(this.getRandomUrl);
+    // const response = await axios.get(getMealRandomUrl);
     // return response.data;
     const id = Math.ceil(Math.random() * 5);
     const dbData = await this.model.findByPk(id, this.getProperties);
@@ -184,15 +180,15 @@ export default class MealsModel implements IMealsModel {
   }
 
   async getCategories(): Promise<dbResponse<IMealsCategories[]>> {
-    // const response = await axios.get(this.getCategoriesUrl);
+    // const response = await axios.get(getMealCategoriesUrl);
     // return response.data;
     const dbData = await this.mealsCategoriesModel.findAll();
 
     return { categories: dbData };
   }
 
-  async getAreas(): Promise<dbResponse<IAreasDB[]>> {
-    // const response = await axios.get(this.getAreasUrl);
+  async getAreas(): Promise<dbResponse<IAreas[]>> {
+    // const response = await axios.get(getAreasUrl);
     // return response.data;
     const dbData = await this.mealsAreasModel.findAll();
 
@@ -200,14 +196,16 @@ export default class MealsModel implements IMealsModel {
   }
 
   async getIngredients(): Promise<dbResponse<IMealsIngredients[]>> {
-    // const response = await axios.get(this.getIngredientsUrl);
+    // const response = await axios.get(getMealIngredientsUrl);
     // return response.data;
     const dbData = await this.mealsIngredientsModel.findAll();
 
     return { meals: dbData };
   }
 
-  async getFilters(type: string, value: string): Promise<dbResponse<IMeals[] | null> | null> {
+  async getFilters(type: string, value: string): Promise<dbResponse<IMeals[]> | null> {
+    // const response = await axios.get(`${getMealFiltersUrl}${type}=${value}`);
+    // return response.data;
     if (type === 'c') {
       const dbData = await this.mealsCategoriesModel.findOne({ where: { strCategory: value } });
       const response = await this.model

@@ -1,4 +1,4 @@
-import { IAreasDB } from '../interfaces/meals/IAreas';
+import { IAreas } from '../interfaces/meals/IAreas';
 import { ServiceResponse } from '../interfaces/ServiceResponse';
 import { IMealsModel } from '../interfaces/meals/IMealsModel';
 import MealsModel from '../models/meals.model';
@@ -50,7 +50,7 @@ export default class MealsService {
     return { status: 'SUCCESSFUL', data: categories };
   }
 
-  public async getAreas(): Promise<ServiceResponse<dbResponse<IAreasDB[]>>> {
+  public async getAreas(): Promise<ServiceResponse<dbResponse<IAreas[]>>> {
     const areas = await this.mealsModel.getAreas();
 
     return { status: 'SUCCESSFUL', data: areas };

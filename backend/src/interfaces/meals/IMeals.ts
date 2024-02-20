@@ -1,8 +1,8 @@
 import { IdentifiableMeal } from '..';
 import { IRecipes } from '../IRecipes';
-import { IAreas } from './IAreas';
 
-export interface IMeals extends IdentifiableMeal, IAreas, IRecipes {
+export interface IMeals extends IdentifiableMeal, IRecipes {
+  strAreaId: number;
   strMeal: string;
   strInstructions: string;
   strMealThumb: string;

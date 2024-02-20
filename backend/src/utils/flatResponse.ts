@@ -25,7 +25,46 @@ const flatResponseObject = (response: any) => {
   return { meals: flattenedMeal };
 };
 
+const flatResponseArrayDrinks = (response: any) => {
+  const { drinks } = response;
+
+  const fixedResponse = drinks.map((drink: any) => {
+    const flattenedDrink = drink.toJSON();
+    flattenedDrink.strCategory = drink.strCategory ? drink.strCategory.strCategory : null;
+
+    flattenedDrink.strIngredient1 = drink.strIngredient1
+      ? drink.strIngredient1.strIngredient1 : null;
+
+    flattenedDrink.strIngredient2 = drink.strIngredient2
+      ? drink.strIngredient2.strIngredient1 : null;
+
+    flattenedDrink.strIngredient3 = drink.strIngredient3
+      ? drink.strIngredient3.strIngredient1 : null;
+    return flattenedDrink;
+  });
+  return { drinks: fixedResponse };
+};
+
+const flatResponseOBjectDrinks = (response: any) => {
+  const { drinks } = response;
+
+  const flattenedDrink = drinks.toJSON();
+  flattenedDrink.strCategory = drinks.strCategory ? drinks.strCategory.strCategory : null;
+
+  flattenedDrink.strIngredient1 = drinks.strIngredient1
+    ? drinks.strIngredient1.strIngredient1 : null;
+
+  flattenedDrink.strIngredient2 = drinks.strIngredient2
+    ? drinks.strIngredient2.strIngredient1 : null;
+
+  flattenedDrink.strIngredient3 = drinks.strIngredient3
+    ? drinks.strIngredient3.strIngredient1 : null;
+  return flattenedDrink;
+};
+
 export {
   flatResponseArray,
   flatResponseObject,
+  flatResponseArrayDrinks,
+  flatResponseOBjectDrinks,
 };

@@ -32,7 +32,6 @@ export interface IRecipes {
   strMeasure13: string | null;
   strMeasure14: string | null;
   strMeasure15: string | null;
-  strSource: string | null;
   strImageSource: string | null;
   strCreativeCommonsConfirmed: string | null;
   dateModified: string | null;

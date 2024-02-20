@@ -23,13 +23,13 @@ InferCreationAttributes<SequelizeDrinks>
   declare strIba: null;
   declare strAlcoholic: string;
   declare strGlass: string;
-  declare strInstructions: string | null;
+  declare strInstructions: string;
   declare strInstructionsEs: string | null;
   declare strInstructionsDe: string | null;
   declare strInstructionsFr: string | null;
   declare strInstructionsIt: string | null;
-  declare strInstructionszgHans: string | null;
-  declare strInstructionszgHat: string | null;
+  declare strInstructionsZhHans: string | null;
+  declare strInstructionsZhHant: string | null;
   declare strDrinkThumb: string;
   declare strIngredient1Id: number;
   declare strIngredient2Id: number;
@@ -218,10 +218,10 @@ SequelizeDrinks.init(
     strInstructionsIt: {
       type: DataTypes.STRING,
     },
-    strInstructionszgHans: {
+    strInstructionsZhHans: {
       type: DataTypes.STRING,
     },
-    strInstructionszgHat: {
+    strInstructionsZhHant: {
       type: DataTypes.STRING,
     },
     strImageAttribution: {

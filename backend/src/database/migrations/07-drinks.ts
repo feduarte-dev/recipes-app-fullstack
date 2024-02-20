@@ -6,7 +6,7 @@ export default {
   up(queryInterface: QueryInterface) {
     return queryInterface.createTable('drinks', {
       idDrink: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -31,48 +31,108 @@ export default {
       },
       strIngredient1Id: {
         type: DataTypes.INTEGER,
+        references: {
+          model: 'drinks_ingredients',
+          key: 'id',
+        },
       },
       strIngredient2Id: {
         type: DataTypes.INTEGER,
+        references: {
+          model: 'drinks_ingredients',
+          key: 'id',
+        },
       },
       strIngredient3Id: {
         type: DataTypes.INTEGER,
+        references: {
+          model: 'drinks_ingredients',
+          key: 'id',
+        },
       },
       strIngredient4Id: {
         type: DataTypes.INTEGER,
+        references: {
+          model: 'drinks_ingredients',
+          key: 'id',
+        },
       },
       strIngredient5Id: {
         type: DataTypes.INTEGER,
+        references: {
+          model: 'drinks_ingredients',
+          key: 'id',
+        },
       },
       strIngredient6Id: {
         type: DataTypes.INTEGER,
+        references: {
+          model: 'drinks_ingredients',
+          key: 'id',
+        },
       },
       strIngredient7Id: {
         type: DataTypes.INTEGER,
+        references: {
+          model: 'drinks_ingredients',
+          key: 'id',
+        },
       },
       strIngredient8Id: {
         type: DataTypes.INTEGER,
+        references: {
+          model: 'drinks_ingredients',
+          key: 'id',
+        },
       },
       strIngredient9Id: {
         type: DataTypes.INTEGER,
+        references: {
+          model: 'drinks_ingredients',
+          key: 'id',
+        },
       },
       strIngredient10Id: {
         type: DataTypes.INTEGER,
+        references: {
+          model: 'drinks_ingredients',
+          key: 'id',
+        },
       },
       strIngredient11Id: {
         type: DataTypes.INTEGER,
+        references: {
+          model: 'drinks_ingredients',
+          key: 'id',
+        },
       },
       strIngredient12Id: {
         type: DataTypes.INTEGER,
+        references: {
+          model: 'drinks_ingredients',
+          key: 'id',
+        },
       },
       strIngredient13Id: {
         type: DataTypes.INTEGER,
+        references: {
+          model: 'drinks_ingredients',
+          key: 'id',
+        },
       },
       strIngredient14Id: {
         type: DataTypes.INTEGER,
+        references: {
+          model: 'drinks_ingredients',
+          key: 'id',
+        },
       },
       strIngredient15Id: {
         type: DataTypes.INTEGER,
+        references: {
+          model: 'drinks_ingredients',
+          key: 'id',
+        },
       },
       strMeasure1: {
         type: DataTypes.STRING,
@@ -152,10 +212,10 @@ export default {
       strInstructionsIt: {
         type: DataTypes.STRING,
       },
-      strInstructionszgHans: {
+      strInstructionsZhHans: {
         type: DataTypes.STRING,
       },
-      strInstructionszgHat: {
+      strInstructionsZhHant: {
         type: DataTypes.STRING,
       },
       strImageAttribution: {

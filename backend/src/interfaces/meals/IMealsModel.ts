@@ -1,4 +1,4 @@
-import { IAreasDB } from './IAreas';
+import { IAreas } from './IAreas';
 import { IMealsIngredients } from './IMealsIngredients';
 import { IMeals } from './IMeals';
 import { IMealsCategories } from './IMealsCategories';
@@ -10,9 +10,9 @@ export interface IMealsModel {
   getMealByLetter(letter: string): Promise<dbResponse<IMeals[] | null>>;
   getRandomMeal(): Promise<dbResponse<IMeals | null>>;
   getCategories(): Promise<dbResponse<IMealsCategories[]>>;
-  getAreas(): Promise<dbResponse<IAreasDB[]>>;
+  getAreas(): Promise<dbResponse<IAreas[]>>;
   getIngredients(): Promise<dbResponse<IMealsIngredients[]>>;
   getFilters(type: string, value: string):
-  Promise<dbResponse<IMeals[] | null> | null>
+  Promise<dbResponse<IMeals[]> | null>
   getMealById(id: number): Promise<dbResponse<IMeals[] | null>>
 }
