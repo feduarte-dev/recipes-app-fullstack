@@ -45,29 +45,7 @@ export default class DrinksModel implements IDrinksModel {
   async getAllDrinks(): Promise<dbResponse<IDrinks[]>> {
     // const response = await axios.get(getDrinkNamesUrl);
     // return response.data;
-    const dbData = await this.model.findAll({
-      include: [
-        {
-          model: this.drinksCategoriesModel,
-          as: 'strCategory',
-          attributes: ['strCategory'],
-        },
-        {
-          model: this.drinksIngredientsModel,
-          as: 'strIngredient1',
-          attributes: ['strIngredient1'],
-        },
-        {
-          model: this.drinksIngredientsModel,
-          as: 'strIngredient2',
-          attributes: ['strIngredient1'],
-        },
-        {
-          model: this.drinksIngredientsModel,
-          as: 'strIngredient3',
-          attributes: ['strIngredient1'],
-        },
-      ] });
+    const dbData = await this.model.findAll(this.getProperties);
 
     return { drinks: dbData };
   }
@@ -76,28 +54,8 @@ export default class DrinksModel implements IDrinksModel {
     // const response = await axios.get(`${getDrinkIdUrl}${id}`);
     // return response.data;
     const dbData = await this.model.findAll({ where: { idDrink: id },
-      include: [
-        {
-          model: this.drinksCategoriesModel,
-          as: 'strCategory',
-          attributes: ['strCategory'],
-        },
-        {
-          model: this.drinksIngredientsModel,
-          as: 'strIngredient1',
-          attributes: ['strIngredient1'],
-        },
-        {
-          model: this.drinksIngredientsModel,
-          as: 'strIngredient2',
-          attributes: ['strIngredient1'],
-        },
-        {
-          model: this.drinksIngredientsModel,
-          as: 'strIngredient3',
-          attributes: ['strIngredient1'],
-        },
-      ] });
+      ...this.getProperties,
+    });
 
     return { drinks: dbData };
   }
@@ -106,28 +64,8 @@ export default class DrinksModel implements IDrinksModel {
     // const response = await axios.get(`${getDrinkNamesUrl}${drink}`);
     // return response.data;
     const dbData = await this.model.findOne({ where: { strDrink: drink },
-      include: [
-        {
-          model: this.drinksCategoriesModel,
-          as: 'strCategory',
-          attributes: ['strCategory'],
-        },
-        {
-          model: this.drinksIngredientsModel,
-          as: 'strIngredient1',
-          attributes: ['strIngredient1'],
-        },
-        {
-          model: this.drinksIngredientsModel,
-          as: 'strIngredient2',
-          attributes: ['strIngredient1'],
-        },
-        {
-          model: this.drinksIngredientsModel,
-          as: 'strIngredient3',
-          attributes: ['strIngredient1'],
-        },
-      ] });
+      ...this.getProperties,
+    });
 
     return { drinks: dbData };
   }
@@ -141,28 +79,7 @@ export default class DrinksModel implements IDrinksModel {
           [Op.like]: `${letter}%`,
         },
       },
-      include: [
-        {
-          model: this.drinksCategoriesModel,
-          as: 'strCategory',
-          attributes: ['strCategory'],
-        },
-        {
-          model: this.drinksIngredientsModel,
-          as: 'strIngredient1',
-          attributes: ['strIngredient1'],
-        },
-        {
-          model: this.drinksIngredientsModel,
-          as: 'strIngredient2',
-          attributes: ['strIngredient1'],
-        },
-        {
-          model: this.drinksIngredientsModel,
-          as: 'strIngredient3',
-          attributes: ['strIngredient1'],
-        },
-      ],
+      ...this.getProperties,
     });
 
     return { drinks: dbData };

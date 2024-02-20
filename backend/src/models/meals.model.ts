@@ -62,33 +62,7 @@ export default class MealsModel implements IMealsModel {
     // const response = await axios.get(`${getMealIdUrl}${id}`);
     // return response.data;
     const dbData = await this.model.findAll({ where: { idMeal: id },
-      include: [
-        {
-          model: this.mealsCategoriesModel,
-          as: 'strCategory',
-          attributes: ['strCategory'],
-        },
-        {
-          model: this.mealsAreasModel,
-          as: 'strArea',
-          attributes: ['strArea'],
-        },
-        {
-          model: this.mealsIngredientsModel,
-          as: 'strIngredient1',
-          attributes: ['strIngredient'],
-        },
-        {
-          model: this.mealsIngredientsModel,
-          as: 'strIngredient2',
-          attributes: ['strIngredient'],
-        },
-        {
-          model: this.mealsIngredientsModel,
-          as: 'strIngredient3',
-          attributes: ['strIngredient'],
-        },
-      ],
+      ...this.getProperties,
     });
 
     return { meals: dbData };
@@ -98,33 +72,7 @@ export default class MealsModel implements IMealsModel {
     // const response = await axios.get(`${getMealNamesUrl}${meal}`);
     // return response.data;
     const dbData = await this.model.findOne({ where: { strMeal: meal },
-      include: [
-        {
-          model: this.mealsCategoriesModel,
-          as: 'strCategory',
-          attributes: ['strCategory'],
-        },
-        {
-          model: this.mealsAreasModel,
-          as: 'strArea',
-          attributes: ['strArea'],
-        },
-        {
-          model: this.mealsIngredientsModel,
-          as: 'strIngredient1',
-          attributes: ['strIngredient'],
-        },
-        {
-          model: this.mealsIngredientsModel,
-          as: 'strIngredient2',
-          attributes: ['strIngredient'],
-        },
-        {
-          model: this.mealsIngredientsModel,
-          as: 'strIngredient3',
-          attributes: ['strIngredient'],
-        },
-      ] });
+      ...this.getProperties });
 
     return { meals: dbData };
   }
@@ -138,33 +86,7 @@ export default class MealsModel implements IMealsModel {
           [Op.like]: `${letter}%`,
         },
       },
-      include: [
-        {
-          model: this.mealsCategoriesModel,
-          as: 'strCategory',
-          attributes: ['strCategory'],
-        },
-        {
-          model: this.mealsAreasModel,
-          as: 'strArea',
-          attributes: ['strArea'],
-        },
-        {
-          model: this.mealsIngredientsModel,
-          as: 'strIngredient1',
-          attributes: ['strIngredient'],
-        },
-        {
-          model: this.mealsIngredientsModel,
-          as: 'strIngredient2',
-          attributes: ['strIngredient'],
-        },
-        {
-          model: this.mealsIngredientsModel,
-          as: 'strIngredient3',
-          attributes: ['strIngredient'],
-        },
-      ],
+      ...this.getProperties,
     });
 
     return { meals: dbData };
