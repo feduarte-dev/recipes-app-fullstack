@@ -1,5 +1,5 @@
 export interface IMealsCategories {
-  idCategory: string;
+  id: number;
   strCategory: string;
   strCategoryThumb: string;
   strCategoryDescription: string;

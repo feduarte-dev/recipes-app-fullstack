@@ -7,31 +7,33 @@ import {
   Model,
 } from 'sequelize';
 import db from '.';
-import SequelizeAreas from './areas.model';
-import SequelizeMealsCategories from './meals.categories.model';
-import SequelizeMealsIngredients from './meals.ingredients.model';
+import SequelizeDrinksCategories from './drinks.categories.model';
+import SequelizeDrinksIngredients from './drinks.ingredients.model';
 
-class SequelizeMeals extends Model<
-InferAttributes<SequelizeMeals>,
-InferCreationAttributes<SequelizeMeals>
+class SequelizeDrinks extends Model<
+InferAttributes<SequelizeDrinks>,
+InferCreationAttributes<SequelizeDrinks>
 > {
-  declare idMeal: CreationOptional<number>;
-  declare strMeal: string;
+  declare idDrink: CreationOptional<number>;
+  declare strDrink: string;
   declare strDrinkAlternate: string | null;
-  declare strCategoryId: number;
-  // declare strCategory: { strCategory: string | null } ;
-  declare strAreaId: number;
-  // declare strArea: { strArea: string | null };
-  declare strInstructions: string;
-  declare strMealThumb: string;
   declare strTags: string;
-  declare strYoutube: string;
+  declare strVideo: string | null;
+  declare strCategoryId: number;
+  declare strIba: null;
+  declare strAlcoholic: string;
+  declare strGlass: string;
+  declare strInstructions: string | null;
+  declare strInstructionsEs: string | null;
+  declare strInstructionsDe: string | null;
+  declare strInstructionsFr: string | null;
+  declare strInstructionsIt: string | null;
+  declare strInstructionszgHans: string | null;
+  declare strInstructionszgHat: string | null;
+  declare strDrinkThumb: string;
   declare strIngredient1Id: number;
-  // declare strIngredient1: { strIngredient: string | null };
   declare strIngredient2Id: number;
-  // declare strIngredient2: { strIngredient: string | null };
   declare strIngredient3Id: number;
-  // declare strIngredient3: { strIngredient: string | null };
   declare strIngredient4Id: number;
   declare strIngredient5Id: number;
   declare strIngredient6Id: number;
@@ -44,11 +46,7 @@ InferCreationAttributes<SequelizeMeals>
   declare strIngredient13Id: number;
   declare strIngredient14Id: number;
   declare strIngredient15Id: number;
-  declare strIngredient16Id: number;
-  declare strIngredient17Id: number;
-  declare strIngredient18Id: number;
-  declare strIngredient19Id: number;
-  declare strIngredient20Id: number;
+
   declare strMeasure1: string | null;
   declare strMeasure2: string | null;
   declare strMeasure3: string | null;
@@ -64,26 +62,22 @@ InferCreationAttributes<SequelizeMeals>
   declare strMeasure13: string | null;
   declare strMeasure14: string | null;
   declare strMeasure15: string | null;
-  declare strMeasure16: string | null;
-  declare strMeasure17: string | null;
-  declare strMeasure18: string | null;
-  declare strMeasure19: string | null;
-  declare strMeasure20: string | null;
-  declare strSource: string | null;
+
+  declare strImageAttribution: string | null;
   declare strImageSource: string | null;
   declare strCreativeCommonsConfirmed: string | null;
   declare dateModified: string | null;
 }
 
-SequelizeMeals.init(
+SequelizeDrinks.init(
   {
-    idMeal: {
+    idDrink: {
       type: DataTypes.STRING,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
     },
-    strMeal: {
+    strDrink: {
       type: DataTypes.STRING,
     },
     strDrinkAlternate: {
@@ -92,19 +86,13 @@ SequelizeMeals.init(
     strCategoryId: {
       type: DataTypes.INTEGER,
     },
-    strAreaId: {
-      type: DataTypes.INTEGER,
-    },
     strInstructions: {
       type: DataTypes.STRING,
     },
-    strMealThumb: {
+    strDrinkThumb: {
       type: DataTypes.STRING,
     },
     strTags: {
-      type: DataTypes.STRING,
-    },
-    strYoutube: {
       type: DataTypes.STRING,
     },
     strIngredient1Id: {
@@ -152,21 +140,6 @@ SequelizeMeals.init(
     strIngredient15Id: {
       type: DataTypes.INTEGER,
     },
-    strIngredient16Id: {
-      type: DataTypes.INTEGER,
-    },
-    strIngredient17Id: {
-      type: DataTypes.INTEGER,
-    },
-    strIngredient18Id: {
-      type: DataTypes.INTEGER,
-    },
-    strIngredient19Id: {
-      type: DataTypes.INTEGER,
-    },
-    strIngredient20Id: {
-      type: DataTypes.INTEGER,
-    },
     strMeasure1: {
       type: DataTypes.STRING,
     },
@@ -212,22 +185,7 @@ SequelizeMeals.init(
     strMeasure15: {
       type: DataTypes.STRING,
     },
-    strMeasure16: {
-      type: DataTypes.STRING,
-    },
-    strMeasure17: {
-      type: DataTypes.STRING,
-    },
-    strMeasure18: {
-      type: DataTypes.STRING,
-    },
-    strMeasure19: {
-      type: DataTypes.STRING,
-    },
-    strMeasure20: {
-      type: DataTypes.STRING,
-    },
-    strSource: {
+    strVideo: {
       type: DataTypes.STRING,
     },
     strImageSource: {
@@ -239,121 +197,110 @@ SequelizeMeals.init(
     dateModified: {
       type: DataTypes.STRING,
     },
-    // strCategory: {
-    //   type: DataTypes.ABSTRACT,
-    // },
-    // strArea: {
-    //   type: DataTypes.STRING,
-    // },
-    // strIngredient1: {
-    //   type: DataTypes.STRING,
-    // },
-    // strIngredient2: {
-    //   type: DataTypes.STRING,
-    // },
-    // strIngredient3: {
-    //   type: DataTypes.STRING,
-    // },
+    strIba: {
+      type: DataTypes.STRING,
+    },
+    strAlcoholic: {
+      type: DataTypes.STRING,
+    },
+    strGlass: {
+      type: DataTypes.STRING,
+    },
+    strInstructionsEs: {
+      type: DataTypes.STRING,
+    },
+    strInstructionsDe: {
+      type: DataTypes.STRING,
+    },
+    strInstructionsFr: {
+      type: DataTypes.STRING,
+    },
+    strInstructionsIt: {
+      type: DataTypes.STRING,
+    },
+    strInstructionszgHans: {
+      type: DataTypes.STRING,
+    },
+    strInstructionszgHat: {
+      type: DataTypes.STRING,
+    },
+    strImageAttribution: {
+      type: DataTypes.STRING,
+    },
   },
   {
     sequelize: db,
-    modelName: 'meals',
+    modelName: 'drinks',
     timestamps: false,
   },
 );
 
-SequelizeMeals.belongsTo(SequelizeMealsCategories, {
+SequelizeDrinks.belongsTo(SequelizeDrinksCategories, {
   foreignKey: 'strCategoryId',
   as: 'strCategory',
 });
 
-SequelizeMeals.belongsTo(SequelizeAreas, {
-  foreignKey: 'strAreaId',
-  as: 'strArea',
-});
-
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
+SequelizeDrinks.belongsTo(SequelizeDrinksIngredients, {
   foreignKey: 'strIngredient1Id',
   as: 'strIngredient1',
 });
 
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
+SequelizeDrinks.belongsTo(SequelizeDrinksIngredients, {
   foreignKey: 'strIngredient2Id',
   as: 'strIngredient2',
 });
 
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
+SequelizeDrinks.belongsTo(SequelizeDrinksIngredients, {
   foreignKey: 'strIngredient3Id',
   as: 'strIngredient3',
 });
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
+SequelizeDrinks.belongsTo(SequelizeDrinksIngredients, {
   foreignKey: 'strIngredient4Id',
   as: 'strIngredient4',
 });
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
+SequelizeDrinks.belongsTo(SequelizeDrinksIngredients, {
   foreignKey: 'strIngredient5Id',
   as: 'strIngredient5',
 });
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
+SequelizeDrinks.belongsTo(SequelizeDrinksIngredients, {
   foreignKey: 'strIngredient6Id',
   as: 'strIngredient6',
 });
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
+SequelizeDrinks.belongsTo(SequelizeDrinksIngredients, {
   foreignKey: 'strIngredient7Id',
   as: 'strIngredient7',
 });
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
+SequelizeDrinks.belongsTo(SequelizeDrinksIngredients, {
   foreignKey: 'strIngredient8Id',
   as: 'strIngredient8',
 });
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
+SequelizeDrinks.belongsTo(SequelizeDrinksIngredients, {
   foreignKey: 'strIngredient9Id',
   as: 'strIngredient9',
 });
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
+SequelizeDrinks.belongsTo(SequelizeDrinksIngredients, {
   foreignKey: 'strIngredient10Id',
   as: 'strIngredient10',
 });
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
+SequelizeDrinks.belongsTo(SequelizeDrinksIngredients, {
   foreignKey: 'strIngredient11Id',
   as: 'strIngredient11',
 });
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
+SequelizeDrinks.belongsTo(SequelizeDrinksIngredients, {
   foreignKey: 'strIngredient12Id',
   as: 'strIngredient12',
 });
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
+SequelizeDrinks.belongsTo(SequelizeDrinksIngredients, {
   foreignKey: 'strIngredient13Id',
   as: 'strIngredient13',
 });
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
+SequelizeDrinks.belongsTo(SequelizeDrinksIngredients, {
   foreignKey: 'strIngredient14Id',
   as: 'strIngredient14',
 });
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
+SequelizeDrinks.belongsTo(SequelizeDrinksIngredients, {
   foreignKey: 'strIngredient15Id',
   as: 'strIngredient15',
 });
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
-  foreignKey: 'strIngredient16Id',
-  as: 'strIngredient16',
-});
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
-  foreignKey: 'strIngredient17Id',
-  as: 'strIngredient17',
-});
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
-  foreignKey: 'strIngredient18Id',
-  as: 'strIngredient18',
-});
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
-  foreignKey: 'strIngredient19Id',
-  as: 'strIngredient19',
-});
 
-SequelizeMeals.belongsTo(SequelizeMealsIngredients, {
-  foreignKey: 'strIngredient20Id',
-  as: 'strIngredient20',
-});
-
-export default SequelizeMeals;
+export default SequelizeDrinks;

@@ -1,5 +1,5 @@
 export interface IMealsIngredients {
-  idIngredient: string;
+  id: number;
   strIngredient: string;
   strDescription: string;
   strType: string | null;

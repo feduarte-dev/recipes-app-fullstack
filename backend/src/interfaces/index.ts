@@ -7,5 +7,6 @@ export type IdentifiableDrink = {
 };
 
 export type dbResponse<T> = {
-  meals: T
+  meals?: T
+  categories?: T
 };

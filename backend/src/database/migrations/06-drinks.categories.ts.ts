@@ -2,7 +2,7 @@ import { QueryInterface, DataTypes } from 'sequelize';
 
 export default {
   up(queryInterface: QueryInterface) {
-    return queryInterface.createTable('meals_categories', {
+    return queryInterface.createTable('drinks_categories', {
       id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -12,16 +12,10 @@ export default {
       strCategory: {
         type: DataTypes.STRING,
       },
-      strCategoryThumb: {
-        type: DataTypes.STRING,
-      },
-      strCategoryDescription: {
-        type: DataTypes.STRING,
-      },
     });
   },
 
   down(queryInterface: QueryInterface) {
-    return queryInterface.dropTable('meals_categories');
+    return queryInterface.dropTable('drinks_categories');
   },
 };

@@ -2,13 +2,13 @@ import { CreationOptional, DataTypes, InferAttributes,
   InferCreationAttributes, Model } from 'sequelize';
 import db from '.';
 
-class SequelizeAreas extends Model<InferAttributes<SequelizeAreas>,
-InferCreationAttributes<SequelizeAreas>> {
+class SequelizeDrinksIngredients extends Model<InferAttributes<SequelizeDrinksIngredients>,
+InferCreationAttributes<SequelizeDrinksIngredients>> {
   declare id: CreationOptional<number>;
-  declare strArea: string;
+  declare strIngredient1: string;
 }
 
-SequelizeAreas.init(
+SequelizeDrinksIngredients.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -16,16 +16,15 @@ SequelizeAreas.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    strArea: {
+    strIngredient1: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
   },
   {
     sequelize: db,
-    modelName: 'areas',
+    modelName: 'drinks_ingredients',
     timestamps: false,
   },
 );
 
-export default SequelizeAreas;
+export default SequelizeDrinksIngredients;

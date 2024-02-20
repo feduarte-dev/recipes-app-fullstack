@@ -32,7 +32,6 @@ SequelizeMealsIngredients.init(
     sequelize: db,
     modelName: 'meals_ingredients',
     timestamps: false,
-    underscored: true,
   },
 );
 

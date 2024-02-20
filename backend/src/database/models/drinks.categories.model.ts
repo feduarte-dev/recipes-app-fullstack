@@ -7,17 +7,15 @@ import {
 } from 'sequelize';
 import db from '.';
 
-class SequelizeMealsCategories extends Model<
-InferAttributes<SequelizeMealsCategories>,
-InferCreationAttributes<SequelizeMealsCategories>
+class SequelizeDrinksCategories extends Model<
+InferAttributes<SequelizeDrinksCategories>,
+InferCreationAttributes<SequelizeDrinksCategories>
 > {
   declare id: CreationOptional<number>;
   declare strCategory: string;
-  declare strCategoryThumb: string;
-  declare strCategoryDescription: string;
 }
 
-SequelizeMealsCategories.init(
+SequelizeDrinksCategories.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -28,18 +26,12 @@ SequelizeMealsCategories.init(
     strCategory: {
       type: DataTypes.STRING,
     },
-    strCategoryThumb: {
-      type: DataTypes.STRING,
-    },
-    strCategoryDescription: {
-      type: DataTypes.STRING,
-    },
   },
   {
     sequelize: db,
-    modelName: 'meals_categories',
+    modelName: 'drinks_categories',
     timestamps: false,
   },
 );
 
-export default SequelizeMealsCategories;
+export default SequelizeDrinksCategories;
