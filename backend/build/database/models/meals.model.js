@@ -1,7 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/* eslint-disable max-lines */
 const sequelize_1 = require("sequelize");
 const _1 = require(".");
+const areas_model_1 = require("./areas.model");
+const meals_categories_model_1 = require("./meals.categories.model");
+const meals_ingredients_model_1 = require("./meals.ingredients.model");
 class SequelizeMeals extends sequelize_1.Model {
 }
 SequelizeMeals.init({
@@ -17,11 +21,11 @@ SequelizeMeals.init({
     strDrinkAlternate: {
         type: sequelize_1.DataTypes.STRING,
     },
-    strCategory: {
-        type: sequelize_1.DataTypes.STRING,
+    strCategoryId: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strArea: {
-        type: sequelize_1.DataTypes.STRING,
+    strAreaId: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
     strInstructions: {
         type: sequelize_1.DataTypes.STRING,
@@ -35,65 +39,65 @@ SequelizeMeals.init({
     strYoutube: {
         type: sequelize_1.DataTypes.STRING,
     },
-    strIngredient1: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient1Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient2: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient2Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient3: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient3Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient4: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient4Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient5: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient5Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient6: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient6Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient7: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient7Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient8: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient8Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient9: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient9Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient10: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient10Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient11: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient11Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient12: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient12Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient13: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient13Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient14: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient14Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient15: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient15Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient16: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient16Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient17: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient17Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient18: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient18Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient19: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient19Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
-    strIngredient20: {
-        type: sequelize_1.DataTypes.STRING,
+    strIngredient20Id: {
+        type: sequelize_1.DataTypes.INTEGER,
     },
     strMeasure1: {
         type: sequelize_1.DataTypes.STRING,
@@ -171,6 +175,94 @@ SequelizeMeals.init({
     sequelize: _1.default,
     modelName: 'meals',
     timestamps: false,
+});
+SequelizeMeals.belongsTo(meals_categories_model_1.default, {
+    foreignKey: 'strCategoryId',
+    as: 'strCategory',
+});
+SequelizeMeals.belongsTo(areas_model_1.default, {
+    foreignKey: 'strAreaId',
+    as: 'strArea',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient1Id',
+    as: 'strIngredient1',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient2Id',
+    as: 'strIngredient2',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient3Id',
+    as: 'strIngredient3',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient4Id',
+    as: 'strIngredient4',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient5Id',
+    as: 'strIngredient5',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient6Id',
+    as: 'strIngredient6',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient7Id',
+    as: 'strIngredient7',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient8Id',
+    as: 'strIngredient8',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient9Id',
+    as: 'strIngredient9',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient10Id',
+    as: 'strIngredient10',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient11Id',
+    as: 'strIngredient11',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient12Id',
+    as: 'strIngredient12',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient13Id',
+    as: 'strIngredient13',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient14Id',
+    as: 'strIngredient14',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient15Id',
+    as: 'strIngredient15',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient16Id',
+    as: 'strIngredient16',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient17Id',
+    as: 'strIngredient17',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient18Id',
+    as: 'strIngredient18',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient19Id',
+    as: 'strIngredient19',
+});
+SequelizeMeals.belongsTo(meals_ingredients_model_1.default, {
+    foreignKey: 'strIngredient20Id',
+    as: 'strIngredient20',
 });
 exports.default = SequelizeMeals;
 //# sourceMappingURL=meals.model.js.map
