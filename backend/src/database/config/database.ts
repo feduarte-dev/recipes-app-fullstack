@@ -1,4 +1,4 @@
-import { Options } from 'sequelize';
+import { Dialect, Options } from 'sequelize';
 
 const config: Options = {
   username: process.env.DB_USER || 'root',
@@ -6,7 +6,7 @@ const config: Options = {
   database: 'RECIPES_APP',
   host: process.env.DB_HOST || 'localhost',
   port: Number(process.env.DB_PORT) || 3306,
-  dialect: 'mysql',
+  dialect: process.env.DB_DIALECT as Dialect || 'mysql',
   dialectOptions: {
     timezone: 'Z',
   },

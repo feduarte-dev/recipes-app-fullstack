@@ -8,6 +8,8 @@ services:
     working_dir: /app-frontend
     # Os `healthcheck` devem garantir que a aplicação
     # está operacional, antes de liberar o container
+    environment:
+      - VITE_BASE_URL=http://backend:3001
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000"]  # Caso utilize outra porta interna para o front, altere ela aqui também
       interval: 10s
@@ -35,6 +37,7 @@ services:
       - DB_PASS=123456
       - DB_HOST=db
       - DB_PORT=3306
+      - DB_DIALECT=mysql
     healthcheck:
       test: ["CMD", "lsof", "-t", "-i:3001"] # Caso utilize outra porta interna para o back, altere ela aqui também
       timeout: 10s
