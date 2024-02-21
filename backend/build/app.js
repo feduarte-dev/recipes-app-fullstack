@@ -36,4 +36,9 @@ class App {
 exports.App = App;
 // Essa segunda exportação é estratégica, e a execução dos testes de cobertura depende dela
 exports.app = new App().app;
+// Vale a pena fazer o mesmo controller, service etc para meals e drink visto q as requisicoes sao mto parecidas, eu poderia passar por parametro qual tipo de recipe eu queria
+// A necessidade de tipar com null qdo acessamos banco de dados é pq pode nao haver nada dentro deles?
+// pq as vezes nao consigo usar o get properties como parametro da busca no banco de dados?
+// parte de comecar a receita ta bugado
+// o warning do frontend no docker é por conta dos arquivos do proprio front end com erros?
 //# sourceMappingURL=app.js.map

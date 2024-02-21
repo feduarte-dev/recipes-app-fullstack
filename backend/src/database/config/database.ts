@@ -1,5 +1,5 @@
 import { Dialect, Options } from 'sequelize';
-import * as pg from 'pg';
+// import * as pg from 'pg';
 
 const config: Options = {
   username: process.env.DB_USER || 'root',
@@ -8,7 +8,7 @@ const config: Options = {
   host: process.env.DB_HOST || 'localhost',
   port: Number(process.env.DB_PORT) || 3306,
   dialect: process.env.DB_DIALECT as Dialect || 'mysql',
-  dialectModule: pg,
+  // dialectModule: pg,
   logging: false,
 };
 
