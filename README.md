@@ -1,8 +1,6 @@
 # README: Recipes App
 
-![image](https://github.com/user-attachments/assets/65bfee6a-926e-4d79-9bfb-7088b02af7ed)
-
-
+![image](https://github.com/user-attachments/assets/93758c2f-d5b5-4c55-879f-5b0906abba97)
 
 ## Project description
 
